@@ -368,16 +368,22 @@ der Universität Freiberg.
 int main()
 {
   int a = 5;
-  int * ptr_a;
+  int &ptr_a;
   ptr_a = a;
   printf("Pointer ptr_a                  %p\n", (void*)ptr_a);
   printf("Wert hinter dem Pointer ptr_a  %d\n", *ptr_a);
-  return EXIT_SUCCESS;
+  return EXIT_SUCESS;
 }
 ```
 @run(zug)
 
-Todo
+
+__Gewünschtes Ergebnis:__
+
+``` text
+Pointer ptr_a                  0x7ffc8809649c
+Wert hinter dem Pointer ptr_a  5
+```
 
 ## Klassen
 
@@ -479,6 +485,8 @@ compare("string2", "string1") = 1
 
 ## Von Arrays und Funktionen
 
+Was? Funktionen können auch in Arrays gespeichert werden... Funktioniert
+irgendwie nicht...
 
 ``` text -header.h
 speed fun(int x)
@@ -669,7 +677,25 @@ Finished!
 [^1]: Quelle http://rosettacode.org/wiki/Sudoku
 
 
-## Merge Sort
+## Merge Sort[^2]
+
+Eigentlich sollte man, um Sortieralgorithmen zu nutzen, nur fertige Bibliotheken
+verwenden, die von Experten gepflegt werden und nicht selber versuchen zu
+optimieren. Was ist schief gelaufen?
+
+> The merge sort is a recursive sort of order $n*log(n)$.
+>
+> It is notable for having a worst case and average complexity of $O(n*log(n))$,
+> and a best case complexity of $O(n)$ (for pre-sorted input).
+>
+> The basic idea is to split the collection into smaller groups by halving it
+> until the groups only have one element or no elements (which are both entirely
+> sorted groups).
+>
+> Then merge the groups back together so that their elements are in order.
+>
+> This is how the algorithm gets its divide and conquer description.
+
 
 ``` text main.cpp
 #include <stdio.h>
@@ -718,7 +744,9 @@ int main () {
 -31 0 1 2 2 4 65 83 99 782
 ```
 
-## Partial function application[^2]
+[^2]: Quelle: https://rosettacode.org/wiki/Sorting_algorithms/Merge_sort
+
+## Partial function application[^3]
 
 Wer hätte gedacht, dass das funktionale "teilweise" Ausführen von Funktionen
 theoretisch in C++ auch möglich ist? Jedoch hat jemand in dem folgenden Beispiel
@@ -815,7 +843,7 @@ ys:
 	fsf2: 4, 16, 36, 64,
 ```
 
-[^2]: Quelle: http://www.rosettacode.org/wiki/Partial_function_application
+[^3]: Quelle: http://www.rosettacode.org/wiki/Partial_function_application
 
 
 ## Finale
