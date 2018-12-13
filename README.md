@@ -167,7 +167,7 @@ send.service("@0", {start: "CodeRunner", settings: null})
 		.receive("ok", e => {
 				send.lia("output", e.message);
 
-				send.service("@0",  {compile: "newbie compute.cpp output.cpp main.cpp -o a.out"})
+				send.service("@0",  {compile: "newbie -fmax-errors=15 compute.cpp output.cpp main.cpp -o a.out"})
 				.receive("ok", e => {
 						send.lia("log", e.message, [], true);
 
@@ -208,12 +208,13 @@ Ende jeder Seite abgebildet.
 Eine Gruppe von euch bekommt die originalen Compiler-Meldungen zu sehen, die
 andere bekommt erweiterte Meldungen mit zusätzlichen Informationen. Damit der
 Fokus nur auf den Compiler-Meldungen liegt, haben wir Features wie
-"inline-notifications" und Syntax-Highligting für beide Gruppen abgeschaltet.
+"inline-notifications" und "syntax-highligting" für beide Gruppen abgeschaltet.
 Alle Fehlermeldungen werden also nur über die Konsole dargestellt und der Code
 ist einheitlich grau.
 
 Das gewünschte Endergebnis ist jeweils in einem Code-Block am Ende jeder Seite
-abgebildet.
+abgebildet. Auch wenn das Programm kompiliert, vergleicht das Ergebnis mit der
+gewünschten Ausgabe.
 
 _Es ist egal wie weit ihr kommt aber bitte gebt nicht gleich auf..._
 
@@ -516,7 +517,7 @@ void F4()
     printf("From F4\n");
 }
 
-void F5()
+voidF5()
 {
     printf("From F5\n");
 }
@@ -527,20 +528,20 @@ void F5()
 
 int main()
 {
-    int (*F_P)(int y);
+    int (&F_P)(int y);
     void (*F_A[5])() = { F1, F2, F3, F4, F5 };
     int xyz, i;
 
     printf("Hello Function Pointer!\n");
     F_P = fun;
     xyz = F_P(5);
-    printf("The Value is %d\n", xyz);
+    printf("The Value is %f\n", xyz);
     //(*F_A[5]) = { F1, F2, F3, F4, F5 };
-    for (i = 0; i < 5; i++)
+    for (i = 1, i <= 5, i++)
     {
         F_A[i]();
     }
-    printf("\n\n");
+    printf("\n\");
     1[F_A]();
     2[F_A]();
     3[F_A]();
@@ -550,6 +551,23 @@ int main()
 ```
 @run_with_h(fctptr)
 
+
+__Gewünschtes Ergebnis:__
+
+``` bash
+Hello Function Pointer!
+The Value is 5
+From F1
+From F2
+From F3
+From F4
+From F5
+
+From F2
+From F3
+From F4
+From F5
+```
 
 ## Sudoku[^1]
 
