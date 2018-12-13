@@ -34,7 +34,7 @@ send.service("@0", {start: "CodeRunner", settings: null})
 		.receive("ok", e => {
 				send.lia("output", e.message);
 
-				send.service("@0",  {compile: "newbie main.cpp -o a.out", order: ["main.cpp"]})
+				send.service("@0",  {compile: "g++ main.cpp -o a.out", order: ["main.cpp"]})
 				.receive("ok", e => {
 						send.lia("log", e.message, [], true);
 
@@ -78,7 +78,7 @@ send.service("@0", {start: "CodeRunner", settings: null})
 		.receive("ok", e => {
 				send.lia("output", e.message);
 
-				send.service("@0",  {compile: "newbie main.cpp -o a.out", order: ["header.h", "main.cpp"]})
+				send.service("@0",  {compile: "g++ main.cpp -o a.out", order: ["header.h", "main.cpp"]})
 				.receive("ok", e => {
 						send.lia("log", e.message, [], true);
 
@@ -123,7 +123,7 @@ send.service("@0", {start: "CodeRunner", settings: null})
 		.receive("ok", e => {
 				send.lia("output", e.message);
 
-				send.service("@0",  {compile: "newbie pushpop.cpp readtokn.cpp calc.cpp -o a.out"})
+				send.service("@0",  {compile: "g++ pushpop.cpp readtokn.cpp calc.cpp -o a.out"})
 				.receive("ok", e => {
 						send.lia("log", e.message, [], true);
 
@@ -167,7 +167,7 @@ send.service("@0", {start: "CodeRunner", settings: null})
 		.receive("ok", e => {
 				send.lia("output", e.message);
 
-				send.service("@0",  {compile: "newbie -fmax-errors=15 compute.cpp output.cpp main.cpp -o a.out"})
+				send.service("@0",  {compile: "g++ -fmax-errors=15 compute.cpp output.cpp main.cpp -o a.out"})
 				.receive("ok", e => {
 						send.lia("log", e.message, [], true);
 
